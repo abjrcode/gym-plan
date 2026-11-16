@@ -15,6 +15,12 @@ An offline workout app for your phone.
 2. Tap **Share → Add to Home Screen**.
 3. Open it once from the home screen while online. After that it works with no signal.
 
+## Glute plan
+
+A second app lives in `glutes/`, at `https://<your-username>.github.io/gym-plan/glutes/`.
+It has three days (A, B, C) for training 1 to 3 times a week: it opens on the next day in the rotation and clears last session's ticks.
+Install it the same way. It has its own `sw.js`, so bump `glute-plan-v1` when you change anything in `glutes/`.
+
 ## Changing it later
 
 Edit the files, then raise the version in `sw.js` (`gym-plan-v1` → `gym-plan-v2`).
