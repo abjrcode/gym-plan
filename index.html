@@ -122,15 +122,15 @@ main{padding-bottom:130px}
       <button class="reset" id="reset">Reset day</button>
     </div>
     <div class="seg" role="group" aria-label="Choose day">
-      <button data-day="a" aria-pressed="false"><b>Day A</b><span>Power and legs</span></button>
-      <button data-day="b" aria-pressed="false"><b>Day B</b><span>Pull, core and rounds</span></button>
+      <button data-day="a" aria-pressed="false"><b>Day A</b><span>Throw, squat, push, pull</span></button>
+      <button data-day="b" aria-pressed="false"><b>Day B</b><span>Swing, hinge, lunge, rounds</span></button>
     </div>
     <div class="prog"><i id="prog"></i></div>
   </div>
 </header>
 
 <main class="wrap">
-  <p class="rules">Stop each set with 2 reps left in the tank. Shoulder or hip pain may reach 3 out of 10, and must be gone by tomorrow. Tap a set when you finish it to start the rest clock.</p>
+  <p class="rules">Stop each set with 2 reps left in the tank. Power work is about speed: stop when you slow down. When every set hits the top of the rep range, go one step heavier next time. Right-side aches (arm, back, hip, knee) may reach 3 out of 10 and must be gone by tomorrow; above that, take the swap. Stop at once if tingling, numbness or weakness spreads down an arm or leg. Tap a set when you finish it to start the rest clock.</p>
   <div id="day"></div>
   <p class="foot">Only one session this week? Alternate Day A and Day B.</p>
 </main>
@@ -278,25 +278,29 @@ const WARM=[rope,
 const COOL=[P(couch,{id:'couch2'}),
   {id:'door',a:'door',n:'Doorway chest stretch',rx:'30s per side',timer:{r:2,w:30,x:5,lab:['Left arm','Right arm'],rl:'Switch sides'},q:'doorway pec stretch'}];
 const DAYS={
- a:{sec:[['Warm-up','10 min',WARM],['Strength','35 min',[
-  {id:'goblet',a:'goblet',hold:'kb',n:'Goblet squat',rx:'3 × 8',sets:3,q:'goblet squat form',note:'Chest up, sit between your heels.',alt:{hold:'db',n:'Dumbbell goblet squat',q:'dumbbell goblet squat form'}},
-  {id:'rdl',a:'rdl',hold:'kb',n:'Kettlebell Romanian deadlift',rx:'3 × 8',sets:3,q:'kettlebell romanian deadlift form',note:'Push your hips back, keep your back flat.',alt:{hold:'db',n:'Dumbbell Romanian deadlift',q:'dumbbell romanian deadlift form'}},
-  {id:'throw',a:'throw',hold:'ball',n:'Med ball rotational throw',rx:'3 × 5 per side',sets:3,q:'medicine ball rotational throw wall',note:'Turn from the back foot, like a hook.',alt:{a:'chop',hold:null,n:'Cable woodchop, fast',q:'cable woodchop form'}},
-  {id:'lm',a:'landmine',n:'Landmine press',rx:'3 × 8 per side',sets:3,q:'half kneeling landmine press',note:'Start light. Easy on the shoulder.',alt:{a:'cpress',n:'Single-arm cable press',q:'single arm standing cable chest press'}},
-  {id:'pallof',a:'pallof',n:'Pallof press',rx:'3 × 10 per side',sets:3,rest:45,q:'pallof press cable',note:'The cable pulls from your side. Don’t let it twist you.',alt:{n:'Band Pallof press',q:'band pallof press'}}
- ]],['Conditioning','6 min',[
-  {id:'row',a:'rower',n:'Rowing machine',rx:'6 × 30s hard, 30s easy',timer:{r:6,w:30,x:30,rl:'Easy'},q:'rowing machine technique beginner',note:'Legs, then lean back, then arms.',alt:{a:'bike',n:'Exercise bike or treadmill',q:'stationary bike interval workout beginner',note:'Same intervals.'}}
+ a:{sec:[['Warm-up','10 min',WARM],['Power','8 min',[
+  {id:'throw',a:'throw',hold:'ball',n:'Med ball rotational throw',rx:'4 × 4 per side',sets:4,rest:60,q:'medicine ball rotational throw wall',note:'3–4 kg ball. Every throw at full speed: turn from the back foot, like a hook. Stop the set when speed drops.',alt:{a:'chop',hold:null,n:'Cable woodchop, fast',q:'cable woodchop form',note:'Light weight, fast pull, slow return.'}}
+ ]],['Strength','25 min',[
+  {id:'goblet',a:'goblet',hold:'kb',n:'Goblet squat',rx:'3 × 6–8',sets:3,q:'goblet squat form',note:'Lower for 3 seconds, stand up fast. Hug the bell against your chest so the wrists stay neutral. When all sets hit 8, go up one bell.',alt:{hold:'db',n:'Dumbbell goblet squat',q:'dumbbell goblet squat form'}},
+  {id:'lm',a:'landmine',n:'Half-kneeling landmine press',rx:'3 × 6–8 per side',sets:3,q:'half kneeling landmine press',note:'Your push for the week. Right arm first; the left matches its reps. Stop if the right forearm aches.',alt:{a:'cpress',n:'Single-arm cable press',q:'single arm standing cable chest press'}},
+  {id:'srow',a:'srow',n:'Seated cable row',rx:'3 × 8',sets:3,q:'seated cable row form',note:'Neutral handle, loose grip, pull with the elbows. Use straps if the grip tires before the back.',alt:{a:'csrow',hold:'db',n:'Chest-supported dumbbell row',q:'chest supported dumbbell row'}}
+ ]],['Core','6 min',[
+  {id:'pallof',a:'pallof',n:'Pallof press',rx:'3 × 8 per side',sets:3,rest:45,q:'pallof press cable',note:'Hold 2 seconds out front each rep. Don’t let the cable twist you.',alt:{n:'Band Pallof press',q:'band pallof press'}},
+  {id:'bug',a:'deadbug',n:'Dead bug',rx:'2 × 8 per side',sets:2,rest:45,q:'dead bug exercise',note:'Lower back stays glued to the floor. Breathe out as the limbs go long.'}
+ ]],['Conditioning','8 min',[
+  {id:'bike',a:'bike',n:'Air bike sprints',rx:'6 × 20s sprint, 40s easy',timer:{r:6,w:20,x:40,rl:'Easy'},q:'assault air bike intervals beginner',note:'Drive with the legs; arms just ride along. Like a fight round: all out, then recover.',alt:{n:'Exercise bike',q:'stationary bike sprint intervals',note:'Same intervals, legs only. Use it if the arms flare.'}}
  ]],['Cool-down','5 min',COOL]]},
- b:{sec:[['Warm-up','10 min',WARM],['Strength','30 min',[
-  {id:'swing',a:'swing',hold:'kb',n:'Kettlebell swing',rx:'4 × 10',sets:4,q:'kettlebell swing beginner form',note:'Snap the hips. Arms just hold on.',alt:{hold:'db',n:'Dumbbell swing',q:'dumbbell swing form'}},
-  {id:'lunge',a:'lunge',hold:'db',n:'Reverse lunge',rx:'3 × 8 per side',sets:3,q:'dumbbell reverse lunge form',alt:{hold:null,n:'Bodyweight reverse lunge',q:'bodyweight reverse lunge form'}},
-  {id:'srow',a:'srow',n:'Seated cable row',rx:'3 × 10',sets:3,q:'seated cable row form',note:'Shoulders down, elbows back.',alt:{a:'csrow',hold:'db',n:'Chest-supported dumbbell row',q:'chest supported dumbbell row'}},
-  {id:'face',a:'face',n:'Face pull',rx:'3 × 12',sets:3,rest:60,q:'cable face pull form',note:'Pull to your forehead, elbows high.',alt:{n:'Band face pull',q:'band face pull'}},
-  {id:'bug',a:'deadbug',n:'Dead bug',rx:'3 × 8 per side',sets:3,rest:45,q:'dead bug exercise',note:'Lower back stays glued to the floor.'},
-  {id:'splank',a:'splank',n:'Side plank',rx:'3 × 30s per side',timer:{r:6,w:30,x:15,lab:['Left side','Right side'],rl:'Switch sides'},q:'side plank form'}
- ]],['Conditioning','13 min',[
-  {id:'bike',a:'bike',n:'Air bike sprints',rx:'5 × 20s sprint, 40s easy',timer:{r:5,w:20,x:40,rl:'Easy'},q:'assault air bike intervals beginner',alt:{n:'Exercise bike or rower',q:'stationary bike sprint intervals',note:'Same intervals.'}},
-  P(rope,{id:'rope2',n:'Jump rope rounds',rx:'3 × 2 min',timer:{r:3,w:120,x:30},note:'Like boxing rounds. Breathe out, stay loose.'})
+ b:{sec:[['Warm-up','10 min',WARM],['Power','8 min',[
+  {id:'swing',a:'swing',hold:'kb',n:'Kettlebell swing',rx:'5 × 6',sets:5,rest:60,q:'kettlebell swing beginner form',note:'Light bell, every rep explosive. Snap the hips; arms just hold on. Stop the set when the snap slows, or if the lower back or right leg complains.',alt:{a:'throw',hold:'ball',n:'Med ball rotational throw',q:'medicine ball rotational throw wall',note:'Use this if the grip flares.'}}
+ ]],['Strength','25 min',[
+  {id:'rdl',a:'rdl',hold:'kb',n:'Romanian deadlift',rx:'3 × 6–8',sets:3,q:'kettlebell romanian deadlift form',note:'Push the hips back, flat back, feel the hamstrings. Keep it light while the lower back and right leg settle. Use straps once the grip gives out. When all sets hit 8 pain-free, go heavier.',alt:{hold:null,n:'Cable pull-through',q:'cable pull through form',note:'Same hip hinge with far less load on the spine and grip. Rope between the legs, face away from the cable.'}},
+  {id:'lunge',a:'lunge',hold:'db',n:'Reverse lunge',rx:'3 × 6 per side',sets:3,q:'goblet reverse lunge form',note:'Hold one dumbbell at your chest to spare the grip. Push back up fast. Shorten the step if the right knee or hip complains.',alt:{hold:null,n:'Bodyweight reverse lunge',q:'bodyweight reverse lunge form'}},
+  {id:'face',a:'face',n:'Face pull',rx:'3 × 12',sets:3,rest:60,q:'cable face pull form',note:'Light. Pull to your forehead, elbows high. Fixes the desk hunch and protects the shoulders.',alt:{n:'Band face pull',q:'band face pull'}}
+ ]],['Core','5 min',[
+  {id:'splank',a:'splank',n:'Side plank',rx:'3 × 30s per side',timer:{r:6,w:30,x:15,lab:['Right side','Left side'],rl:'Switch sides'},q:'side plank form',note:'Elbow under the shoulder, hips high. Drop to the knees to scale it.'}
+ ]],['Conditioning','11 min',[
+  {id:'row',a:'rower',n:'Rowing machine',rx:'5 × 30s hard, 30s easy',timer:{r:5,w:30,x:30,rl:'Easy'},q:'rowing machine technique beginner',note:'Legs, then lean back, then arms. Hook the handle with loose fingers.',alt:{a:'bike',n:'Exercise bike',q:'stationary bike interval workout beginner',note:'Same intervals. Use it if the forearm flares.'}},
+  P(rope,{id:'rope2',n:'Jump rope rounds',rx:'2 × 2 min',timer:{r:2,w:120,x:30},note:'Like boxing rounds. Breathe out, stay loose.'})
  ]],['Cool-down','5 min',COOL]]}
 };
 
