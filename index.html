@@ -113,6 +113,13 @@ main{padding-bottom:130px}
 .bb svg{width:18px;height:18px}
 @media (max-width:360px){#bTime{font-size:38px;min-width:80px}.card{grid-template-columns:80px 1fr}}
 
+.st{margin:4px 0 0;font-size:14px;font-weight:600}
+.guide{background:var(--card);border-radius:14px;padding:0 16px;margin:14px 0 0}
+.guide summary{padding:14px 0;font-weight:600;cursor:pointer}
+.guide h3{margin:12px 0 4px;font-size:15px}
+.guide ul{margin:0 0 4px;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.5}
+.guide ul:last-child{padding-bottom:14px}
+
 #vnav{position:fixed;z-index:8;top:50%;transform:translateY(-50%);right:max(2px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;align-items:flex-end}
 #vnav button{display:flex;align-items:center;gap:8px;background:none;border:0;padding:7px 6px;color:var(--muted);text-align:left}
 #vnav i{flex:none;width:10px;height:10px;border-radius:50%;border:2px solid var(--ink2);background:var(--bg);transition:transform .2s,background .2s,border-color .2s}
@@ -150,7 +157,41 @@ main{padding-bottom:130px}
 <nav id="vnav" aria-label="Sections"></nav>
 
 <main class="wrap">
-  <p class="rules">Stop each set with 2 reps left in the tank. Power work is about speed: stop when you slow down. When every set hits the top of the rep range, go one step heavier next time. Right-side aches (arm, back, hip, knee) may reach 3 out of 10 and must be gone by tomorrow; above that, take the swap. Stop at once if tingling, numbness or weakness spreads down an arm or leg. Tap a set when you finish it to start the rest clock.</p>
+  <p class="rules">Stop each set with 2 reps left in the tank. Power work is about speed: stop when you slow down. When every set hits the top of the rep range, go one step heavier next time. Right-side aches (arm, shoulder, back, hip, knee) may reach 3 out of 10 and must be gone by tomorrow; above that, take the swap. Stop at once if tingling, numbness or weakness spreads down an arm or leg. Tap a set when you finish it to start the rest clock.</p>
+  <details class="guide">
+    <summary>How to choose weights and progress</summary>
+    <h3>First session</h3>
+    <ul>
+      <li>Take the kg on the card. It is a careful guess for an 80 kg beginner lifter with a sore right side. Do one warm-up set of 6–8 with about half of it.</li>
+      <li>Do a set at the low end of the rep range. Ask: how many more clean reps could I do?</li>
+      <li>4 or more left: go up one step. 2–3 left: keep it. 0–1 left: go down one step.</li>
+      <li>Cable and machine numbers differ between gyms. Trust reps left over the number.</li>
+      <li>Single-arm work: find the weight with the right arm. Use the same for the left.</li>
+    </ul>
+    <h3>How hard each set should feel</h3>
+    <ul>
+      <li>Strength: stop with 2 good reps left. The last reps slow down, but form stays clean.</li>
+      <li>Trials (lateral raise, chest press): stop with 3–4 left.</li>
+      <li>Power: light and fast. Add weight only if speed stays the same.</li>
+      <li>Conditioning: hard, about 8 out of 10. The last round should match the first.</li>
+    </ul>
+    <h3>When to go up</h3>
+    <ul>
+      <li>First add reps. Same weight until every set hits the top of the range.</li>
+      <li>Then add the smallest step, and start again at the low end of the range.</li>
+      <li>Example, 3 × 6–10 at 16 kg: 8, 7, 6, then 10, 9, 8, then 10, 10, 10. Next time take 18 kg for 3 × 6.</li>
+      <li>Big jump between weights? Do 1–2 extra reps per set first, or lower for 3 seconds.</li>
+      <li>Romanian deadlift: stay light until the back and leg settle.</li>
+      <li>Write down the kg you lift and the reps each time. The app does not save them.</li>
+    </ul>
+    <h3>When to hold or go down</h3>
+    <ul>
+      <li>Reps fall for two sessions in a row: drop about 10% and build back.</li>
+      <li>Two weeks or more off, or a bad night: drop about 10% that day.</li>
+      <li>Ache above 3 out of 10: take the swap. If it lasts to tomorrow, go one step lighter next time, or drop the move if it is a trial.</li>
+      <li>Tingling, numbness or weakness that spreads: stop the session.</li>
+    </ul>
+  </details>
   <div id="day"></div>
   <p class="foot">Only one session this week? Alternate Day A and Day B.</p>
 </main>
@@ -219,6 +260,11 @@ A.couch={dur:4500,
   A:{h:[51,34],s:[50,44],p:[48,72],e1:[58,56],w1:[66,68],e2:[56,57],w2:[64,69],k1:[68,72],f1:[68,92],k2:[44,92],f2:[30,72]},
   B:{h:[56,34],s:[55,44],p:[53,73],e1:[62,57],w1:[67,69],e2:[60,58],w2:[65,70],k1:[69,72],f1:[68,92],k2:[44,92],f2:[30,72]},
   bk:()=>rc(16,64,14,29.5,'eqf')};
+A.lat={fv:1,dur:2600,A:FR,B:P(FR,{e1:[47,28],w1:[35,30],e2:[73,28],w2:[85,30]}),fr:Q=>HOLD.db(Q.w1)+HOLD.db(Q.w2)};
+A.mpress={dur:2400,
+  A:{h:[41,30],s:[40,40],p:[40,68],e1:[40,53],w1:[51,47],e2:[39,53],w2:[50,47],k1:[60,70],f1:[62,92],k2:[58,70],f2:[60,92]},
+  B:{h:[41,30],s:[40,40],p:[40,68],e1:[52,44],w1:[64,45],e2:[51,44],w2:[63,45],k1:[60,70],f1:[62,92],k2:[58,70],f2:[60,92]},
+  bk:Q=>rc(32,36,4,36,'eqf')+rc(32,71,22,4,'eqf')+ln([42,75],[42,93],'eq')+col(104)+ln(Q.w1,[104,40],'cab')};
 A.pa={fv:1,dur:1800,A:P(FR,{e1:[54,33],w1:[57,30],e2:[66,33],w2:[63,30]}),B:P(FR,{e1:[40,25],w1:[27,26],e2:[80,25],w2:[93,26]}),fr:Q=>ln(Q.w1,Q.w2,'band')};
 A.goblet={dur:2800,A:P(ST,{e1:[64,36],w1:[66,29],e2:[62,36],w2:[65,29]}),
   B:{h:[58,36],s:[55,46],p:[46,72],e1:[61,57],w1:[63,49],e2:[59,57],w2:[62,49],k1:[66,74],f1:[61,92],k2:[64,74],f2:[59,92]}};
@@ -234,10 +280,6 @@ A.throw={dur:1600,
 {const b=P(FR,{k1:[55,73],k2:[65,73]});
  A.chop={fv:1,dur:1900,A:P(b,{e1:[46,15],w1:[38,8],e2:[52,14],w2:[41,7]}),B:P(b,{e1:[64,40],w1:[75,52],e2:[74,37],w2:[78,50]}),
   bk:Q=>col(6)+ln([8,6],[(Q.w1[0]+Q.w2[0])/2,(Q.w1[1]+Q.w2[1])/2],'cab')};}
-{const K={h:[48,34],s:[47,44],p:[46,72],k1:[64,74],f1:[64,92],k2:[44,92],f2:[28,92],e2:[43,57],w2:[47,67]};
- A.landmine={dur:2400,A:P(K,{e1:[53,56],w1:[55,46]}),B:P(K,{e1:[58,36],w1:[68,29]}),
-  bk:Q=>{const a=[6,92],dx=Q.w1[0]-a[0],dy=Q.w1[1]-a[1],d=Math.hypot(dx,dy),ux=dx/d,uy=dy/d;
-    return ln(a,[Q.w1[0]+ux*4,Q.w1[1]+uy*4],'bar')+ci([Q.w1[0]-ux*10,Q.w1[1]-uy*10],5.5,'ac')+ci(a,2,'eqf')}};}
 {const b=P(ST,{k1:[66,72],f1:[70,92],k2:[56,72],f2:[50,92],e2:[55,38],w2:[59,48]});
  A.cpress={dur:2000,A:P(b,{e1:[52,37],w1:[63,33]}),B:P(b,{e1:[72,29],w1:[85,28]}),bk:Q=>col(5)+ln([7,31],Q.w1,'cab')};}
 {const b=P(ST,{k1:[63,72],f1:[64,92],k2:[57,72],f2:[56,92]});
@@ -253,9 +295,6 @@ A.bike={dur:1000,pose:c=>{
     const w1=[77+3*Math.cos(th),33],w2=[77-3*Math.cos(th),34];
     return{h:[68,20],s,p,f1,f2,k1:ik(p,f1,20,20,-1),k2:ik(p,f2,20,20,-1),w1,w2,e1:ik(s,w1,12,12,1),e2:ik(s,w2,12,12,1)}},
   bk:()=>ln([36,93],[100,93],'eq')+ci([88,70],14,'eqf')+ln([47,55],[58,80],'eq')+ln([58,80],[74,46],'eq')+ln([74,46],[77,32],'eq')+ci([58,80],8,'eq dsh')+rc(42,52,12,3,'eqf')};
-A.knees={dur:700,
-  A:P(ST,{k1:[79,55],f1:[76,74],k2:[60,72],f2:[60,92],e1:[52,34],w1:[48,44],e2:[66,35],w2:[72,27]}),
-  B:P(ST,{k2:[79,55],f2:[76,74],k1:[60,72],f1:[60,92],e2:[52,34],w2:[48,44],e1:[66,35],w1:[72,27]})};
 {const b=P(ST,{k1:[66,72],f1:[69,92],k2:[56,72],f2:[51,92],p:[59,52],h:[59,14],s:[58,24]});
  A.face={dur:2200,A:P(b,{e1:[71,22],w1:[84,21],e2:[70,23],w2:[83,22]}),B:P(b,{e1:[52,17],w1:[65,10],e2:[53,18],w2:[66,11]}),
   bk:Q=>col(112)+ln([110,21],Q.w1,'cab')};}
@@ -267,9 +306,6 @@ A.knees={dur:700,
   bk:()=>ln([40,70],[75,51],'bnch')+ln([46,68],[46,93],'eq')+ln([68,56],[68,93],'eq')};}
 {const b={h:[25,84],s:[36,86],p:[63,86],e2:[38,73],w2:[38,60],k1:[63,66],f1:[81,66]};
  A.deadbug={dur:3200,A:P(b,{e1:[36,73],w1:[36,60],k2:[65,66],f2:[83,66]}),B:P(b,{e1:[25,76],w1:[12,80],k2:[83,83],f2:[103,86]})};}
-A.splank={dur:3000,
-  A:{h:[21,71],s:[30,78],p:[58,85],e1:[30,92],w1:[42,92],e2:[42,72],w2:[52,81],k1:[78,89],f1:[98,92],k2:[78,88],f2:[98,91]},
-  B:{h:[21,70],s:[30,77],p:[58,79],e1:[30,92],w1:[42,92],e2:[42,70],w2:[52,76],k1:[78,85],f1:[98,92],k2:[78,84],f2:[98,91]}};
 {const b=P(ST,{k1:[64,72],f1:[66,92],k2:[57,72],f2:[55,92],e1:[50,26],w1:[50,13]});
  A.door={dur:3600,A:b,B:P(b,{h:[67,15],s:[65,25],p:[62,52],k1:[67,71],e2:[63,39],w2:[64,52]}),bk:()=>rc(45,4,4,89.5,'eqf',1)};}
 
@@ -289,38 +325,41 @@ requestAnimationFrame(loop);
 
 /* ---------- plan ---------- */
 const V=q=>'https://www.youtube.com/results?search_query='+encodeURIComponent(q);
-const rope={id:'rope',a:'rope',n:'Jump rope',rx:'3 min',timer:{r:1,w:180},q:'jump rope for beginners boxing',note:'Light and bouncy, on the balls of your feet.',alt:{a:'knees',n:'High knees',q:'high knees exercise'}};
+const warmup={id:'warm',a:'bike',n:'Easy bike',rx:'3 min',timer:{r:1,w:180},q:'stationary bike warm up',note:'Easy enough to talk. Saddle high so the right hip never bends deep. If it still pinches, walk on a flat treadmill.',alt:{a:'rope',n:'Jump rope',rx:'6 × 20s, 10s rest',timer:{r:6,w:20,x:10},q:'jump rope for beginners boxing',note:'Low, soft bounces. Only if you bring your own rope and the hip is quiet.'}};
 const couch={a:'couch',n:'Couch stretch',rx:'45s per side',timer:{r:2,w:45,x:10,lab:['Left knee down','Right knee down'],rl:'Switch sides'},q:'couch stretch hip flexor',note:'Squeeze the glute of the back leg.'};
-const WARM=[rope,
+const WARM=[warmup,
   {id:'ninety',a:'ninety',n:'90/90 hip switches',rx:'10 reps',sets:1,rest:0,q:'90 90 hip switch mobility'},
   P(couch,{id:'couch'}),
-  {id:'pa',a:'pa',n:'Band pull-aparts',rx:'2 × 15',sets:2,rest:30,q:'band pull apart form',note:'Bring your own band, or use a light cable.',alt:{n:'Cable reverse flyes',q:'cable reverse fly form',note:'Light weight, slow and controlled.'}}];
+  {id:'pa',a:'pa',n:'Band pull-aparts',rx:'2 × 15',sets:2,rest:30,q:'band pull apart form',note:'Bring your own band, or use a light cable.',alt:{start:'2.5 kg per side',n:'Cable reverse flyes',q:'cable reverse fly form',note:'Light weight, slow and controlled.'}}];
 const COOL=[P(couch,{id:'couch2'}),
   {id:'door',a:'door',n:'Doorway chest stretch',rx:'30s per side',timer:{r:2,w:30,x:5,lab:['Left arm','Right arm'],rl:'Switch sides'},q:'doorway pec stretch'}];
 const DAYS={
- a:{sec:[['Warm-up','10 min',WARM],['Power','8 min',[
-  {id:'throw',a:'throw',hold:'ball',n:'Med ball rotational throw',rx:'4 × 4 per side',sets:4,rest:60,q:'medicine ball rotational throw wall',note:'3–4 kg ball. Every throw at full speed: turn from the back foot, like a hook. Stop the set when speed drops.',alt:{a:'chop',hold:null,n:'Cable woodchop, fast',q:'cable woodchop form',note:'Light weight, fast pull, slow return.'}}
- ]],['Strength','25 min',[
-  {id:'goblet',a:'goblet',hold:'kb',n:'Goblet squat',rx:'3 × 6–8',sets:3,q:'goblet squat form',note:'Lower for 3 seconds, stand up fast. Hug the bell against your chest so the wrists stay neutral. When all sets hit 8, go up one bell.',alt:{hold:'db',n:'Dumbbell goblet squat',q:'dumbbell goblet squat form'}},
-  {id:'lm',a:'landmine',n:'Half-kneeling landmine press',rx:'3 × 6–8 per side',sets:3,q:'half kneeling landmine press',note:'Your push for the week. Right arm first; the left matches its reps. Stop if the right forearm aches.',alt:{a:'cpress',n:'Single-arm cable press',q:'single arm standing cable chest press'}},
-  {id:'srow',a:'srow',n:'Seated cable row',rx:'3 × 8',sets:3,q:'seated cable row form',note:'Neutral handle, loose grip, pull with the elbows. Use straps if the grip tires before the back.',alt:{a:'csrow',hold:'db',n:'Chest-supported dumbbell row',q:'chest supported dumbbell row'}}
- ]],['Core','6 min',[
-  {id:'pallof',a:'pallof',n:'Pallof press',rx:'3 × 8 per side',sets:3,rest:45,q:'pallof press cable',note:'Hold 2 seconds out front each rep. Don’t let the cable twist you.',alt:{n:'Band Pallof press',q:'band pallof press'}},
+ a:{sec:[['Warm-up','10 min',WARM],['Power','5 min',[
+  {id:'throw',start:'3 kg ball',a:'throw',hold:'ball',n:'Med ball rotational throw',rx:'3 × 4 per side',sets:3,rest:60,q:'medicine ball rotational throw wall',note:'3–4 kg ball. Every throw at full speed: turn from the back foot, like a hook. Stop the set when speed drops.',alt:{start:'5 kg on the cable',a:'chop',hold:null,n:'Cable woodchop, fast',q:'cable woodchop form',note:'Light weight, fast pull, slow return.'}}
+ ]],['Strength','32 min',[
+  {id:'goblet',start:'12 kg',a:'goblet',hold:'kb',n:'Goblet squat',rx:'3 × 6–10',sets:3,q:'goblet squat form',note:'Lower for 3 seconds, stand up fast. Hug the bell against your chest so the wrists stay neutral. When all sets hit 10, go up one bell.',alt:{start:'12 kg',hold:'db',n:'Dumbbell goblet squat',q:'dumbbell goblet squat form'}},
+  {id:'cp',start:'5 kg per arm',a:'cpress',n:'Single-arm cable press, low to high',rx:'3 × 6–10 per side',sets:3,q:'single arm low to high cable press',note:'Your main push. Handle at hip height, press up and forward to eye level. Right arm first; the left matches its reps. Stop if the right forearm or shoulder aches.',alt:{n:'Band press, low to high',q:'single arm band chest press standing',start:'',note:'Light band, one arm at a time. Right arm first.'}},
+  {id:'lat',start:'2 kg per hand',a:'lat',n:'Light lateral raise',rx:'2 × 12–15',sets:2,rest:60,q:'dumbbell lateral raise form',note:'Trial: start very light, 3–4 reps in reserve. Right arm sets the reps. Stop if ache passes 3 out of 10; skip it next time if it lasts to tomorrow. 1–3 kg, elbows soft, stop below shoulder height, loose grip.',alt:{start:'',n:'Band pull-aparts',a:'pa',q:'band pull apart form',note:'Use this if the raise flares the arm or shoulder.'}},
+  {id:'srow',start:'25 kg',a:'srow',n:'Seated cable row',rx:'3 × 8–10',sets:3,q:'seated cable row form',note:'Neutral handle, loose grip, pull with the elbows. Use straps if the grip tires before the back.',alt:{start:'8 kg per hand',a:'csrow',hold:'db',n:'Chest-supported dumbbell row',q:'chest supported dumbbell row'}},
+  {id:'pull',start:'15 kg',a:'rdl',n:'Cable pull-through',rx:'2 × 10–12',sets:2,q:'cable pull through form',note:'Glutes and hamstrings with little load on the spine. Rope between the legs, face away from the cable. Loose grip.'}
+ ]],['Core','4 min',[
   {id:'bug',a:'deadbug',n:'Dead bug',rx:'2 × 8 per side',sets:2,rest:45,q:'dead bug exercise',note:'Lower back stays glued to the floor. Breathe out as the limbs go long.'}
- ]],['Conditioning','8 min',[
+ ]],['Conditioning','6 min',[
   {id:'bike',a:'bike',n:'Air bike sprints',rx:'6 × 20s sprint, 40s easy',timer:{r:6,w:20,x:40,rl:'Easy'},q:'assault air bike intervals beginner',note:'Drive with the legs; arms just ride along. Like a fight round: all out, then recover.',alt:{n:'Exercise bike',q:'stationary bike sprint intervals',note:'Same intervals, legs only. Use it if the arms flare.'}}
  ]],['Cool-down','5 min',COOL]]},
- b:{sec:[['Warm-up','10 min',WARM],['Power','8 min',[
-  {id:'swing',a:'swing',hold:'kb',n:'Kettlebell swing',rx:'5 × 6',sets:5,rest:60,q:'kettlebell swing beginner form',note:'Light bell, every rep explosive. Snap the hips; arms just hold on. Stop the set when the snap slows, or if the lower back or right leg complains.',alt:{a:'throw',hold:'ball',n:'Med ball rotational throw',q:'medicine ball rotational throw wall',note:'Use this if the grip flares.'}}
- ]],['Strength','25 min',[
-  {id:'rdl',a:'rdl',hold:'kb',n:'Romanian deadlift',rx:'3 × 6–8',sets:3,q:'kettlebell romanian deadlift form',note:'Push the hips back, flat back, feel the hamstrings. Keep it light while the lower back and right leg settle. Use straps once the grip gives out. When all sets hit 8 pain-free, go heavier.',alt:{hold:null,n:'Cable pull-through',q:'cable pull through form',note:'Same hip hinge with far less load on the spine and grip. Rope between the legs, face away from the cable.'}},
-  {id:'lunge',a:'lunge',hold:'db',n:'Reverse lunge',rx:'3 × 6 per side',sets:3,q:'goblet reverse lunge form',note:'Hold one dumbbell at your chest to spare the grip. Push back up fast. Shorten the step if the right knee or hip complains.',alt:{hold:null,n:'Bodyweight reverse lunge',q:'bodyweight reverse lunge form'}},
-  {id:'face',a:'face',n:'Face pull',rx:'3 × 12',sets:3,rest:60,q:'cable face pull form',note:'Light. Pull to your forehead, elbows high. Fixes the desk hunch and protects the shoulders.',alt:{n:'Band face pull',q:'band face pull'}}
- ]],['Core','5 min',[
-  {id:'splank',a:'splank',n:'Side plank',rx:'3 × 30s per side',timer:{r:6,w:30,x:15,lab:['Right side','Left side'],rl:'Switch sides'},q:'side plank form',note:'Elbow under the shoulder, hips high. Drop to the knees to scale it.'}
- ]],['Conditioning','11 min',[
+ b:{sec:[['Warm-up','10 min',WARM],['Power','5 min',[
+  {id:'swing',start:'12 kg',a:'swing',hold:'kb',n:'Kettlebell swing',rx:'3 × 6',sets:3,rest:60,q:'kettlebell swing beginner form',note:'Light bell, every rep explosive. Snap the hips; arms just hold on. Stop the set when the snap slows, or if the lower back or right leg complains.',alt:{start:'3 kg ball',a:'throw',hold:'ball',n:'Med ball rotational throw',q:'medicine ball rotational throw wall',note:'Use this if the grip flares.'}}
+ ]],['Strength','30 min',[
+  {id:'rdl',start:'12 kg',a:'rdl',hold:'kb',n:'Romanian deadlift',rx:'3 × 6–10',sets:3,q:'kettlebell romanian deadlift form',note:'Push the hips back, flat back, feel the hamstrings. Keep it light while the lower back and right leg settle. Use straps once the grip gives out. When all sets hit 10 pain-free, go heavier.',alt:{start:'15 kg',hold:null,n:'Cable pull-through',q:'cable pull through form',note:'Same hip hinge with far less load on the spine and grip. Rope between the legs, face away from the cable.'}},
+  {id:'lunge',start:'8 kg',a:'lunge',hold:'db',n:'Reverse lunge',rx:'3 × 6–8 per side',sets:3,q:'goblet reverse lunge form',note:'Hold one dumbbell at your chest to spare the grip. Push back up fast. Shorten the step if the right knee or hip complains.',alt:{start:'',hold:null,n:'Bodyweight reverse lunge',q:'bodyweight reverse lunge form'}},
+  {id:'mpress',start:'15 kg in total',a:'mpress',n:'Machine chest press',rx:'2 × 10–12',sets:2,q:'machine chest press neutral grip form',note:'Trial: start very light, 3–4 reps in reserve. Right arm sets the reps. Stop if ache passes 3 out of 10; skip it next time if it lasts to tomorrow. Neutral handles, elbows close. Do not stretch deep at the bottom.',alt:{a:'cpress',n:'Single-arm cable press',rx:'2 × 8 per side',q:'single arm standing cable chest press',start:'5 kg per arm',note:'Light. Right arm first. Use this if the machine flares the arm or shoulder.'}},
+  {id:'srow',start:'25 kg',a:'srow',n:'Seated cable row',rx:'2 × 8–10',sets:2,q:'seated cable row form',note:'Neutral handle, loose grip, pull with the elbows. Use straps if the grip tires before the back.',alt:{start:'8 kg per hand',a:'csrow',hold:'db',n:'Chest-supported dumbbell row',q:'chest supported dumbbell row'}},
+  {id:'face',start:'10 kg',a:'face',n:'Face pull',rx:'3 × 12–15',sets:3,rest:60,q:'cable face pull form',note:'Light. Pull to your forehead, elbows high. Fixes the desk hunch and protects the shoulders.',alt:{start:'',n:'Band face pull',q:'band face pull'}}
+ ]],['Core','4 min',[
+  {id:'pallof',start:'5 kg',a:'pallof',n:'Pallof press',rx:'2 × 8 per side',sets:2,rest:45,q:'pallof press cable',note:'Replaces the side plank: no weight on the shoulder or hip. Light, 2-second hold out front. Don’t let the cable twist you.',alt:{start:'',a:'deadbug',n:'Dead bug',q:'dead bug exercise',note:'Use this if the right shoulder complains. Lower back glued to the floor; keep the leg higher if the hip pinches.'}}
+ ]],['Conditioning','8 min',[
   {id:'row',a:'rower',n:'Rowing machine',rx:'5 × 30s hard, 30s easy',timer:{r:5,w:30,x:30,rl:'Easy'},q:'rowing machine technique beginner',note:'Legs, then lean back, then arms. Hook the handle with loose fingers.',alt:{a:'bike',n:'Exercise bike',q:'stationary bike interval workout beginner',note:'Same intervals. Use it if the forearm flares.'}},
-  P(rope,{id:'rope2',n:'Jump rope rounds',rx:'2 × 2 min',timer:{r:2,w:120,x:30},note:'Like boxing rounds. Breathe out, stay loose.'})
+  {id:'fin',a:'bike',n:'Exercise bike rounds',rx:'4 × 20s, 20s rest',timer:{r:4,w:20,x:20},q:'stationary bike interval workout beginner',note:'Fast legs, light resistance, saddle high. Stop while you still feel fresh. When all 4 feel easy with no hip pain the next day, go to 25s.',alt:{a:'rope',n:'Jump rope rounds',q:'jump rope for beginners boxing',note:'Same intervals, if you bring your own rope and the hip is quiet. Low, soft bounces.'}}
  ]],['Cool-down','5 min',COOL]]}
 };
 
@@ -347,7 +386,7 @@ function card(it){
   return`<article class="card${isDone(it)?' done':''}" data-id="${it.id}">
     <div class="tile"><svg class="fig" viewBox="0 0 120 100" data-anim="${m.a}" data-hold="${m.hold||''}" aria-hidden="true"></svg></div>
     <div class="bd"><h3>${m.n}${on?'<span class="tag">alt</span>':''}</h3>
-      <div class="rx cd">${m.rx}</div>${m.note?`<p class="note">${m.note}</p>`:''}
+      <div class="rx cd">${m.rx}</div>${m.start?`<p class="st">Start with ${m.start}</p>`:''}${m.note?`<p class="note">${m.note}</p>`:''}
       <div class="row">${row}</div>
       <div class="links"><a class="lnk" href="${V(m.q)}" target="_blank" rel="noopener">${I.video}Watch how</a>${sw}</div>
     </div></article>`;

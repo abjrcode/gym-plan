@@ -1,5 +1,5 @@
 // Bump this version whenever you change any file, so phones pick up the update.
-const CACHE = 'gym-plan-v2';
+const CACHE = 'gym-plan-v8';
 const FILES = [
   './',
   './index.html',
